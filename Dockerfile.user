@@ -1,0 +1,15 @@
+FROM golang
+
+WORKDIR /go/src/github.com/tinrab/go-grpc-services-example/user-service
+COPY user-service .
+COPY session ../session
+
+RUN go-wrapper download
+RUN go-wrapper install
+
+EXPOSE 3000
+
+RUN adduser --disabled-password --gecos '' userservice
+USER userservice
+
+CMD [ "user-service" ]

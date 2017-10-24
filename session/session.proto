@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package session;
+
+message SessionRequest {
+  string user = 1;
+}
+
+message SessionResponse {
+  string token = 1;
+  uint64 createdAt = 2;
+  uint64 expiration = 3;
+}
+
+message SignInRequest {
+  string user = 1;
+}
+
+message SignInResponse {
+  string token = 1;
+  uint64 expiration = 2;
+}
+
+service Session {
+  rpc GetSession (SessionRequest) returns (SessionResponse) {}
+  rpc SignIn (SignInRequest) returns (SignInResponse) {}
+}
