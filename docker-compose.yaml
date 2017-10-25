@@ -1,18 +1,19 @@
 version: '3'
 services:
-  user:
-    container_name: 'user'
+  api:
     build:
       context: '.'
-      dockerfile: 'Dockerfile.user'
+      dockerfile: 'Dockerfile.api'
     ports:
-      - '3001:3000'
+      - '8080:3000'
     depends_on:
-      - 'session'
-  session:
-    container_name: 'session'
+      - 'add'
+      - 'multiply'
+  add:
     build:
       context: '.'
-      dockerfile: 'Dockerfile.session'
-    ports:
-      - '3000:3000'
+      dockerfile: 'Dockerfile.add'
+  multiply:
+    build:
+      context: '.'
+      dockerfile: 'Dockerfile.multiply'

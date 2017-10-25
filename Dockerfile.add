@@ -1,0 +1,15 @@
+FROM golang
+
+WORKDIR /go/src/github.com/tinrab/go-grpc-services-example/add
+COPY add .
+COPY pb ../pb
+
+RUN go-wrapper download
+RUN go-wrapper install
+
+EXPOSE 3000
+
+RUN adduser --disabled-password --gecos '' add
+USER add
+
+CMD [ "add" ]

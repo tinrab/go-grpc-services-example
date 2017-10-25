@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pb;
+
+message MultiplyRequest {
+  double a = 1;
+  double b = 2;
+}
+
+message MultiplyResponse {
+  double result = 1;
+}
+
+service MultiplicationService {
+  rpc Multiply (MultiplyRequest) returns (MultiplyResponse) {}
+}
